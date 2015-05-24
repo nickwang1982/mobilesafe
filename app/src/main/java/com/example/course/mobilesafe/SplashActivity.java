@@ -2,12 +2,17 @@ package com.example.course.mobilesafe;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
@@ -17,9 +22,11 @@ import android.widget.Toast;
 
 import com.example.course.mobilesafe.domain.UpdateInfo;
 import com.example.course.mobilesafe.engine.UpdateInfoParser;
+import com.example.course.mobilesafe.utils.DownLoadUtil;
 
 import org.xmlpull.v1.XmlPullParserException;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -39,12 +46,16 @@ public class SplashActivity extends Activity {
     private static final int PROTOCOL_ERROR = 13;
     private static final int IO_ERROR = 14;
     private static final int XML_PARSE_ERROR = 15;
+    private static final int DOWNLOAD_SUCCESS = 16;
+    private static final int DOWNLOAD_FAILED = 17;
 
     protected static final String TAG = "SplashActivity";
 
     private UpdateInfo info;
     private long startTime;
     private long endTime;
+
+    private ProgressDialog pd;
 
     private Handler handler = new Handler() {
         @Override
@@ -78,6 +89,15 @@ public class SplashActivity extends Activity {
                     } else {
                         Toast.makeText(getApplicationContext(), "This is current Version", Toast.LENGTH_LONG);
                     }
+                    break;
+                case DOWNLOAD_SUCCESS:
+                    Log.i(TAG, "Download apk success !");
+                    File file = (File) msg.obj;
+                    installApk(file);
+                    break;
+                case DOWNLOAD_FAILED:
+                    Toast.makeText(getApplicationContext(), "Download failed !", Toast.LENGTH_SHORT);
+                    loadMainUI();
                     break;
             }
         }
@@ -172,14 +192,67 @@ public class SplashActivity extends Activity {
         }
     }
 
+    private void loadMainUI() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        this.finish();
+    }
+
+    protected void installApk(File file) {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.addCategory(Intent.CATEGORY_DEFAULT);
+        intent.setDataAndType(Uri.fromFile(file),
+                "application/vnd.android.package-archive");
+        startActivity(intent);
+    }
+
     protected void showUpdateDialog() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setIcon(getResources().getDrawable(R.drawable.notification));
         builder.setTitle("Update app");
         builder.setMessage(info.getDescription());
+
+        pd = new ProgressDialog(SplashActivity.this);
+        pd.setMessage("Downloading new version");
+        pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         builder.setPositiveButton("Update" , new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                Log.i(TAG, "Downloading " + info.getApkurl());
+
+                if(Environment.MEDIA_MOUNTED.equals(
+                        Environment.getExternalStorageState())) {
+                    pd.show();
+                    new Thread() {
+                        @Override
+                        public void run() {
+                            String path = info.getApkurl();
+                            String fileName = DownLoadUtil.getFileName(path);
+                            File file = new File(Environment.getExternalStorageDirectory(), fileName);
+
+                            file = DownLoadUtil.getFile(path, file.getAbsolutePath(), pd);
+
+                            if (file != null) {
+                                Message msg = Message.obtain();
+                                msg.what = DOWNLOAD_SUCCESS;
+                                msg.obj = file;
+                                handler.sendMessage(msg);
+
+                            } else {
+                                Message msg = Message.obtain();
+                                msg.what = DOWNLOAD_FAILED;
+                                handler.sendMessage(msg);
+
+                            }
+
+
+                        }
+                    }.start();
+                } else {
+                    Toast.makeText(getApplicationContext(), "SD card not ready !", Toast.LENGTH_SHORT);
+                    loadMainUI();
+                }
 
             }
         });
