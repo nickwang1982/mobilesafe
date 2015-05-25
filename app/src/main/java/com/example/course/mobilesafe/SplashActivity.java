@@ -62,10 +62,12 @@ public class SplashActivity extends Activity {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case SERVER_ERROR:
+                    loadMainUI();
                     Toast.makeText(getApplicationContext(), "Server error!", Toast.LENGTH_SHORT)
                             .show();
                     break;
                 case SERVER_URL_ERROR:
+                    loadMainUI();
                     Toast.makeText(getApplicationContext(), "Server url address error!",
                             Toast.LENGTH_SHORT).show();
                     break;
@@ -74,10 +76,12 @@ public class SplashActivity extends Activity {
                             .show();
                     break;
                 case IO_ERROR:
+                    loadMainUI();
                     Toast.makeText(getApplicationContext(), "IO error!", Toast.LENGTH_SHORT)
                             .show();
                     break;
                 case XML_PARSE_ERROR:
+                    loadMainUI();
                     Toast.makeText(getApplicationContext(), "XML parser error!", Toast.LENGTH_SHORT)
                             .show();
                     break;
@@ -87,6 +91,7 @@ public class SplashActivity extends Activity {
                     if (!serverVerison.equals(currentVersion)) {
                         showUpdateDialog();
                     } else {
+                        loadMainUI();
                         Toast.makeText(getApplicationContext(), "This is current Version", Toast.LENGTH_LONG);
                     }
                     break;
