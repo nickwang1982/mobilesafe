@@ -3,6 +3,8 @@ package com.example.course.mobilesafe.utils;
 import android.app.ProgressDialog;
 import android.widget.ProgressBar;
 
+import org.apache.http.HttpStatus;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -34,6 +36,7 @@ public class DownLoadUtil {
     public static File getFile(String urlpath, String filepath,
                                ProgressDialog pd) {
         try {
+            // start Download
             URL url = new URL(urlpath);
             File file = new File(filepath);
             FileOutputStream fos = new FileOutputStream(file);
@@ -52,10 +55,14 @@ public class DownLoadUtil {
             byte[] buffer = new byte[1024];
             int len = 0;
             int process  = 0;
+            long time = System.currentTimeMillis();
             while ((len = is.read(buffer)) != -1) {
                 fos.write(buffer, 0, len);
                 process+=len;
-                pd.setProgress(process);
+                android.util.Log.v("Nick" , "time  " + (System.currentTimeMillis() - time));
+                if (System.currentTimeMillis() - time > 30) {
+                    pd.setProgress(process);
+                }
                 Thread.sleep(30);
             }
             // fresh data file

@@ -1,7 +1,7 @@
 package com.example.course.mobilesafe.domain;
 
 /**
- * Created by Guangyu on 2015/5/20.
+ * Basic info from Version.xml
  */
 public class UpdateInfo {
     private String version;

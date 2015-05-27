@@ -63,13 +63,45 @@ public class MainAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = inflater.inflate(R.layout.main_item,  null);
-        TextView tv_name = (TextView) view.findViewById(R.id.tv_main_item_name);
-        ImageView iv_icon = (ImageView) view.findViewById(R.id.iv_main_item_icon);
+        // solution 1:
+//        View view = inflater.inflate(R.layout.main_item,  null);
+//        TextView tv_name = (TextView) view.findViewById(R.id.tv_main_item_name);
+//        ImageView iv_icon = (ImageView) view.findViewById(R.id.iv_main_item_icon);
+//
+//        tv_name.setText(mList.get(position).getItemTitle());
+//        iv_icon.setImageResource(mList.get(position).getItemRes());
+//        return view;
 
-        tv_name.setText(mList.get(position).getItemTitle());
-        iv_icon.setImageResource(mList.get(position).getItemRes());
-        return view;
+        // Solution 2: use convertView
+//        if (convertView == null) {
+//            convertView = inflater.inflate(R.layout.main_item,null);
+//        }
+//        TextView tv_name = (TextView) convertView.findViewById(R.id.tv_main_item_name);
+//        ImageView iv_icon = (ImageView) convertView.findViewById(R.id.iv_main_item_icon);
+//
+//        tv_name.setText(mList.get(position).getItemTitle());
+//        iv_icon.setImageResource(mList.get(position).getItemRes());
+//        return convertView;
+
+        // Solution 3: use viewHolder
+        ViewHolder viewHolder;
+        if (convertView == null) {
+            viewHolder = new ViewHolder();
+            convertView = inflater.inflate(R.layout.main_item, null);
+            viewHolder.textView = (TextView) convertView.findViewById(R.id.tv_main_item_name);
+            viewHolder.imageView = (ImageView) convertView.findViewById(R.id.iv_main_item_icon);
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
+        viewHolder.textView.setText(mList.get(position).getItemTitle());
+        viewHolder.imageView.setImageResource(mList.get(position).getItemRes());
+        return convertView;
+    }
+
+    class ViewHolder {
+        public TextView textView;
+        public ImageView imageView;
     }
 
     @Override

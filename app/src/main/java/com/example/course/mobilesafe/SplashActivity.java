@@ -54,6 +54,7 @@ public class SplashActivity extends Activity {
     private UpdateInfo info;
     private long startTime;
     private long endTime;
+    private boolean mShowMainUI = false;
 
     private ProgressDialog pd;
 
@@ -72,6 +73,7 @@ public class SplashActivity extends Activity {
                             Toast.LENGTH_SHORT).show();
                     break;
                 case PROTOCOL_ERROR:
+                    loadMainUI();
                     Toast.makeText(getApplicationContext(), "Unsupported protocol!", Toast.LENGTH_SHORT)
                             .show();
                     break;
@@ -98,6 +100,7 @@ public class SplashActivity extends Activity {
                 case DOWNLOAD_SUCCESS:
                     Log.i(TAG, "Download apk success !");
                     File file = (File) msg.obj;
+                    mShowMainUI = true;
                     installApk(file);
                     break;
                 case DOWNLOAD_FAILED:
@@ -107,6 +110,15 @@ public class SplashActivity extends Activity {
             }
         }
     };
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        android.util.Log.v("Nick" , " " + mShowMainUI);
+        if (mShowMainUI) {
+            loadMainUI();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -265,7 +277,7 @@ public class SplashActivity extends Activity {
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                loadMainUI();
             }
         });
 
