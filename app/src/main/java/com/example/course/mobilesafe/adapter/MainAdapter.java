@@ -1,6 +1,7 @@
 package com.example.course.mobilesafe.adapter;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,13 +10,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.course.mobilesafe.R;
+import com.example.course.mobilesafe.domain.ItemBeanInfo;
+
+import java.util.ArrayList;
 
 /**
- * Created by Guangyu on 2015/5/24.
+ * Adapter for Main UI items
  */
 public class MainAdapter extends BaseAdapter{
     private LayoutInflater inflater;
     private Context context;
+    public ArrayList<ItemBeanInfo> mList = new ArrayList<ItemBeanInfo>();
+
+
     // Put 9 icon pics into this list
     private static final int[] icons = {
             R.drawable.widget01,
@@ -29,22 +36,29 @@ public class MainAdapter extends BaseAdapter{
             R.drawable.widget09
     };
     // The title for each icon
-    private static final String[] names = {
-            "Safe",
-            "Security",
-            "Apps",
-            "Process",
-            "Data",
-            "AntiVirus",
-            "Optimize",
-            "Advance",
-            "Settings"
-    };
+//    private static final String[] names = {
+//            "Safe",
+//            "Security",
+//            "Apps",
+//            "Process",
+//            "Data",
+//            "AntiVirus",
+//            "Optimize",
+//            "Advance",
+//            "Settings"
+//    };
 
     public MainAdapter(Context context) {
         this.context = context;
         inflater = (LayoutInflater)
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        String[] names = context.getResources().getStringArray(R.array.ItemName);
+
+        for (int i = 0; i < 9; i++) {
+            ItemBeanInfo itemBean;
+            itemBean = new ItemBeanInfo(i, names[i], icons[i]);
+            mList.add(itemBean);
+        }
     }
 
     @Override
@@ -53,8 +67,8 @@ public class MainAdapter extends BaseAdapter{
         TextView tv_name = (TextView) view.findViewById(R.id.tv_main_item_name);
         ImageView iv_icon = (ImageView) view.findViewById(R.id.iv_main_item_icon);
 
-        tv_name.setText(names[position]);
-        iv_icon.setImageResource(icons[position]);
+        tv_name.setText(mList.get(position).getItemTitle());
+        iv_icon.setImageResource(mList.get(position).getItemRes());
         return view;
     }
 
@@ -70,6 +84,6 @@ public class MainAdapter extends BaseAdapter{
 
     @Override
     public int getCount() {
-        return names.length;
+        return mList.size();
     }
 }

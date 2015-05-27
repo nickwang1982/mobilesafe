@@ -44,7 +44,7 @@ public class DownLoadUtil {
             conn.setConnectTimeout(5000);
             // Get the max length of file
             int max = conn.getContentLength();
-            // Set progress bar
+            // Set progress dialog
             pd.setMax(max);
             // The file input  stream
             InputStream is = conn.getInputStream();

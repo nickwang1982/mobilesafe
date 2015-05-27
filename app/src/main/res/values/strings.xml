@@ -6,4 +6,6 @@
     <string name="label_version">Version: </string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_setting_center">SettingCenterActivity</string>
+
+
 </resources>
