@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="serverurl">http://192.168.1.100/Version.xml</string>
+    <array name="ItemName">
+        <item name="safe">Safe</item>
+        <item name="security">Security</item>
+        <item name="apps">Apps</item>
+        <item name="process">Process</item>
+        <item name="data">Data</item>
+        <item name="antivirus">AntiVirus</item>
+        <item name="optimize">Optimize</item>
+        <item name="advance">Advance</item>
+        <item name="settings">Settings</item>
+    </array>
+</resources>
