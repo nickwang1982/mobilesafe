@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <ImageView style="@style/image_online_style" />
+
+        <ImageView style="@style/image_offline_style" />
+
+        <ImageView style="@style/image_offline_style" />
+
+        <ImageView style="@style/image_offline_style" />
+    </LinearLayout>
+
+    <TextView
+        style="@style/text_title_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1. Welcome to Mobile Safe" />
+
+    <View style="@style/image_divideline_style" />
+
+    <TextView
+        style="@style/text_content_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Your Mobile Safe" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <ImageView
+            style="@style/image_start_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            style="@style/text_content_style"
+            android:paddingTop="2dp"
+            android:text="Warning for SIM card change" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <ImageView style="@style/image_start_style" />
+
+        <TextView
+            style="@style/text_content_style"
+            android:paddingTop="2dp"
+            android:text="GPS tracking" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <ImageView style="@style/image_start_style" />
+
+        <TextView
+            style="@style/text_content_style"
+            android:paddingTop="2dp"
+            android:text="Remote data wipe" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <ImageView style="@style/image_start_style" />
+
+        <TextView
+            style="@style/text_content_style"
+            android:paddingTop="2dp"
+            android:text="Remote lock" />
+    </LinearLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent" >
+		<ImageView 
+		    style="@style/image_logo_style"
+		    android:src="@drawable/setup1"
+		    />
+        <Button style="@style/button_next_style" 
+            />
+    </RelativeLayout>
+
+</LinearLayout>

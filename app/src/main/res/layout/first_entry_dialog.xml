@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="260dp"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Password"
+        android:textColor="#2E8B57"
+        android:textSize="26sp" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/devide_line" >
+    </View>
+
+    <EditText
+        android:id="@+id/et_first_dialog_pwd"
+        android:layout_width="fill_parent"
+        android:inputType="textPassword"
+        android:layout_height="wrap_content"
+        android:hint="Please enter password" />
+
+    <EditText
+        android:id="@+id/et_first_dialog_pwd_confirm"
+        android:layout_width="fill_parent"
+        android:inputType="textPassword"
+        android:layout_height="wrap_content"
+        android:hint="Enter password again" />
+
+    <LinearLayout
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/bt_first_dialog_ok"
+            android:text="OK" />
+
+        <Button
+            android:id="@+id/bt_first_dialog_cancel"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Cancel" />
+    </LinearLayout>
+
+</LinearLayout>

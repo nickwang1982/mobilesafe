@@ -27,6 +27,13 @@ public class MainActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
+                    case 0: // Safe Mobile
+                        // Navigate to Lost protection
+
+                        Intent lostprotecedIntent = new Intent(MainActivity.this,
+                                LostProtectedActivity.class);
+                        startActivity(lostprotecedIntent);
+                        break;
                     case 8:
                         Intent settingintent = new Intent(MainActivity.this,
                                 SettingCenterActivity.class);

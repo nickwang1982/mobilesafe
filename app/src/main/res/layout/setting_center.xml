@@ -8,7 +8,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="Settings"
-        android:textColor="#66ff00"
+        android:textColor="#2E8B57"
         android:textSize="28sp"/>
 
     <View

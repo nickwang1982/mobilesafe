@@ -1,7 +1,9 @@
 package com.example.course.mobilesafe.adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +22,7 @@ import java.util.ArrayList;
 public class MainAdapter extends BaseAdapter{
     private LayoutInflater inflater;
     private Context context;
+    private String newName;
     public ArrayList<ItemBeanInfo> mList = new ArrayList<ItemBeanInfo>();
 
 
@@ -35,19 +38,6 @@ public class MainAdapter extends BaseAdapter{
             R.drawable.widget08,
             R.drawable.widget09
     };
-    // The title for each icon
-//    private static final String[] names = {
-//            "Safe",
-//            "Security",
-//            "Apps",
-//            "Process",
-//            "Data",
-//            "AntiVirus",
-//            "Optimize",
-//            "Advance",
-//            "Settings"
-//    };
-
     public MainAdapter(Context context) {
         this.context = context;
         inflater = (LayoutInflater)
@@ -59,6 +49,9 @@ public class MainAdapter extends BaseAdapter{
             itemBean = new ItemBeanInfo(i, names[i], icons[i]);
             mList.add(itemBean);
         }
+
+        SharedPreferences sp = context.getSharedPreferences("config", Context.MODE_PRIVATE);
+        newName = sp.getString("newname", "");
     }
 
     @Override
@@ -96,6 +89,15 @@ public class MainAdapter extends BaseAdapter{
         }
         viewHolder.textView.setText(mList.get(position).getItemTitle());
         viewHolder.imageView.setImageResource(mList.get(position).getItemRes());
+
+
+        // For mobile safe item the title can be custormize by user.
+        if (position == 0) {
+            // See whether user has already config the tile
+            if (!TextUtils.isEmpty(newName)) {
+                viewHolder.textView.setText(newName);
+            }
+        }
         return convertView;
     }
 

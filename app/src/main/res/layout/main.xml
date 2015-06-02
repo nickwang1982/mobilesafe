@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="Mobile Safe"
-        android:textColor="#66ff00"
+        android:textColor="#2E8B57"
         android:textSize="28sp"/>
 
     <View

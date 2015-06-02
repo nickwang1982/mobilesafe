@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <ImageView style="@style/image_offline_style" />
+
+        <ImageView style="@style/image_offline_style" />
+
+        <ImageView style="@style/image_online_style" />
+
+        <ImageView style="@style/image_offline_style" />
+    </LinearLayout>
+
+    <TextView
+        style="@style/text_title_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="3. Set security number" />
+
+    <View style="@style/image_divideline_style" />
+
+    <TextView
+        style="@style/text_content_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="After SIM card change\n warning message will send to this number" />
+
+    
+    <EditText 
+        android:inputType="phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Please enter security number or select a new one"
+        android:id="@+id/et_setup3_number"
+        />
+    <Button 
+      	android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select from contact"
+        android:onClick="selectContact"
+        />
+    
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent" >
+
+        <ImageView
+            style="@style/image_logo_style"
+            android:src="@drawable/phone" />
+
+        <Button style="@style/button_next_style" />
+
+        <Button style="@style/button_pre_style" />
+    </RelativeLayout>
+
+</LinearLayout>

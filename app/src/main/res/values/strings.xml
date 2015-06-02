@@ -6,6 +6,12 @@
     <string name="label_version">Version: </string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_setting_center">SettingCenterActivity</string>
+    <string name="title_activity_lost_protected">LostProtectedActivity</string>
+    <string name="title_activity_setup1">Setup1Activity</string>
+    <string name="title_activity_setup2">Setup2Activity</string>
+    <string name="title_activity_setup3">Setup3Activity</string>
+    <string name="title_activity_select_contact">SelectContactActivity</string>
+    <string name="title_activity_setup4">Setup4Activity</string>
 
 
 </resources>

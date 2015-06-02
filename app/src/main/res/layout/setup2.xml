@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <ImageView style="@style/image_offline_style" />
+
+        <ImageView style="@style/image_online_style" />
+
+        <ImageView style="@style/image_offline_style" />
+
+        <ImageView style="@style/image_offline_style" />
+    </LinearLayout>
+
+    <TextView
+        style="@style/text_title_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2. Bind your SIM card" />
+
+    <View style="@style/image_divideline_style" />
+
+    <TextView
+        style="@style/text_content_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Once bind your sim card \n You will get warning after you change your SIM card" />
+
+    <RelativeLayout
+        android:id="@+id/rl_setup2_bind"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/item_bg" >
+
+        <TextView
+            style="@style/text_content_style"
+            android:paddingTop="8dp"
+            android:text="Click to bind your sim card" />
+
+        <ImageView
+            android:id="@+id/iv_setup2_bind_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/switch_off_normal" />
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent" >
+
+        <ImageView
+            style="@style/image_logo_style"
+            android:src="@drawable/bind" />
+
+        <Button style="@style/button_next_style" />
+
+        <Button style="@style/button_pre_style" />
+    </RelativeLayout>
+
+</LinearLayout>
