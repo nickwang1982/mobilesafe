@@ -59,7 +59,6 @@ public class DownLoadUtil {
             while ((len = is.read(buffer)) != -1) {
                 fos.write(buffer, 0, len);
                 process+=len;
-                android.util.Log.v("Nick" , "time  " + (System.currentTimeMillis() - time));
                 if (System.currentTimeMillis() - time > 30) {
                     pd.setProgress(process);
                 }

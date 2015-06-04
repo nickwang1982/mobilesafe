@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -114,7 +115,6 @@ public class SplashActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        android.util.Log.v("Nick" , " " + mShowMainUI);
         if (mShowMainUI) {
             loadMainUI();
         }
@@ -138,10 +138,16 @@ public class SplashActivity extends Activity {
         aa.setDuration(2000);
         rl_splash.startAnimation(aa);
 
-        // Connect to server to get latest version info
-        new Thread(new CheckVersionTask()){
+        SharedPreferences sp = getSharedPreferences("config", MODE_PRIVATE);
 
-        }.start();
+
+        if (sp.getBoolean("autoupdate",true)) {
+            // Connect to server to get latest version info
+            new Thread(new CheckVersionTask()) {
+            }.start();
+        } else {
+            Log.d(TAG, "Auto update OFF");
+        }
 
     }
 

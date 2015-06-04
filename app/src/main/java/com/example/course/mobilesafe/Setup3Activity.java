@@ -52,7 +52,7 @@ public class Setup3Activity extends Activity {
         }
 
         SharedPreferences.Editor editor = sp.edit();
-        editor.putString("safemuber", number);
+        editor.putString("safenumber", number);
         editor.commit();
 
         Intent intent = new Intent(this,Setup4Activity.class);

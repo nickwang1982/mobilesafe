@@ -148,8 +148,8 @@ public class LostProtectedActivity extends Activity implements View.OnClickListe
                         setContentView(R.layout.lost_protected);
 
                         tv_lost_protect_number = (TextView) findViewById(R.id.tv_lost_protect_number);
-                        String safemuber = sp.getString("safemuber", "");
-                        tv_lost_protect_number.setText(safemuber);
+                        String safenumber = sp.getString("safenumber", "");
+                        tv_lost_protect_number.setText(safenumber);
 
                         rl_lost_protect_setting = (RelativeLayout)findViewById(R.id.rl_lost_protect_setting);
 
