@@ -24,7 +24,7 @@ public class Setup3Activity extends Activity {
         setContentView(R.layout.setup3);
         et_setup3_number = (EditText) findViewById(R.id.et_setup3_number);
         sp = getSharedPreferences("config", MODE_PRIVATE);
-        String number = sp.getString("safemuber", "");
+        String number = sp.getString("safenumber", "");
         et_setup3_number.setText(number);
     }
 

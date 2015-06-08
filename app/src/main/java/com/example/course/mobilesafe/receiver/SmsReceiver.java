@@ -25,7 +25,7 @@ public class SmsReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         sp = context.getSharedPreferences("config" , Context.MODE_PRIVATE);
-        String safenumber = sp.getString("savemuber", "");
+        String safenumber = sp.getString("safenumber", "");
         Object[] objs = (Object[]) intent.getExtras().get("pdus");
 
         DevicePolicyManager dm = (DevicePolicyManager) context.getSystemService(Context.DEVICE_POLICY_SERVICE);
