@@ -34,6 +34,11 @@ public class MainActivity extends Activity {
                                 LostProtectedActivity.class);
                         startActivity(lostprotecedIntent);
                         break;
+                    case 7: // Advanced tools
+                        Intent atoolsIntent = new Intent(MainActivity.this,
+                                AtoolsActivity.class);
+                        startActivity(atoolsIntent);
+                        break;
                     case 8:
                         Intent settingintent = new Intent(MainActivity.this,
                                 SettingCenterActivity.class);
