@@ -94,7 +94,7 @@ public class AtoolsActivity extends Activity implements OnClickListener {
 			final File commonnumberfile = new File(getFilesDir(),
 					"commonnum.db");
 			if (commonnumberfile.exists() && commonnumberfile.length() > 0) {
-//				loadCommNumUI();
+				loadCommNumUI();
 			} else {
 				pd.show();
 				new Thread() {
@@ -126,10 +126,10 @@ public class AtoolsActivity extends Activity implements OnClickListener {
 	/**
 	 * Enter common number UI
 	 */
-//	private void loadCommNumUI() {
-//		Intent intent = new Intent(this, CommonNumActivity.class);
-//		startActivity(intent);
-//	}
+    private void loadCommNumUI() {
+        Intent intent = new Intent(this, CommonNumActivity.class);
+        startActivity(intent);
+    }
 
 	/**
 	 * Enter query UI

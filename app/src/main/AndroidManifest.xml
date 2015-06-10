@@ -58,6 +58,8 @@
 
         <activity android:name=".DragViewActivity" >
         </activity>
+        <activity android:name=".CommonNumActivity" >
+        </activity>
         <activity
             android:name=".Setup1Activity"
             android:label="@string/title_activity_setup1" >
