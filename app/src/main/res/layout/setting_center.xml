@@ -49,4 +49,119 @@
         android:layout_height="1dp"
         android:background="@drawable/devide_line"/>
 
+    <RelativeLayout
+        android:id="@+id/rl_setting_show_location"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+        <TextView
+            android:id="@+id/tv_setting_show_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Incomming call location"
+            android:textSize="26sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/tv_setting_show_location_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_setting_show_location"
+            android:text="In comming call location OFF"
+            android:textSize="14sp"/>
+        <CheckBox
+            android:id="@+id/cb_setting_show_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:checked="false"
+            android:clickable="false"
+            android:focusable="false"/>
+        </RelativeLayout>
+    <View
+        android:layout_marginTop="4dp"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/devide_line"/>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_setting_change_bg"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dip" >
+
+        <TextView
+            android:id="@+id/tv_setting_change_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Inomming call location style"
+            android:textSize="26sp"
+            android:textStyle="bold" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_setting_show_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_setting_change_bg"
+            android:text="Translucence"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:clickable="false"
+            android:focusable="false"
+            android:src="@drawable/jiantou1" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/listview_devider" >
+    </View>
+
+    <RelativeLayout
+        android:id="@+id/rl_setting_change_location"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dip" >
+
+        <TextView
+            android:id="@+id/tv_setting_change_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location toast layout"
+            android:textSize="26sp"
+            android:textStyle="bold" >
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_setting_change_location"
+            android:text="Change location toast layout"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:clickable="false"
+            android:focusable="false"
+            android:src="@drawable/jiantou1" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/listview_devider" >
+    </View>
+
 </LinearLayout>

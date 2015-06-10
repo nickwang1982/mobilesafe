@@ -56,6 +56,8 @@
             </intent-filter>
         </receiver>
 
+        <activity android:name=".DragViewActivity" >
+        </activity>
         <activity
             android:name=".Setup1Activity"
             android:label="@string/title_activity_setup1" >
@@ -80,7 +82,8 @@
         </activity>
         <activity android:name=".NumberQueryActivity" >
         </activity>
-
+        <service android:name=".service.ShowCallLocationService" >
+        </service>
 
         <receiver android:name=".receiver.MyAdmin" >
             <meta-data
