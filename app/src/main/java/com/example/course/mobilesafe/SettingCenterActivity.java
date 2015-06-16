@@ -6,8 +6,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.CheckBox;
@@ -16,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.course.mobilesafe.service.ShowCallLocationService;
+import com.example.course.mobilesafe.service.WatchDogService;
 import com.example.course.mobilesafe.utils.ServiceStatusUtil;
 
 
@@ -92,6 +91,12 @@ public class SettingCenterActivity extends Activity implements View.OnClickListe
 
         rl_setting_change_location = (RelativeLayout) findViewById(R.id.rl_setting_change_location);
         rl_setting_change_location.setOnClickListener(this);
+		tv_setting_app_lock_status = (TextView) findViewById(R.id.tv_setting_applock_status);
+		cb_setting_applock = (CheckBox) findViewById(R.id.cb_setting_applock);
+		rl_setting_app_lock = (RelativeLayout) findViewById(R.id.rl_setting_applock);
+		watchDogIntent = new Intent(this, WatchDogService.class);
+
+		rl_setting_app_lock.setOnClickListener(this);
     }
 
 
@@ -107,6 +112,14 @@ public class SettingCenterActivity extends Activity implements View.OnClickListe
             tv_setting_show_location_status.setText("Incomming call location OFF");
         }
 
+		if (ServiceStatusUtil.isServiceRunning(this,
+				"com.example.course.mobilesafe.service.WatchDogService")) {
+			cb_setting_applock.setChecked(true);
+			tv_setting_app_lock_status.setText("App lock service ON");
+		} else {
+			cb_setting_applock.setChecked(false);
+			tv_setting_app_lock_status.setText("App lock service OFF");
+		}
         super.onResume();
     }
 
@@ -131,6 +144,19 @@ public class SettingCenterActivity extends Activity implements View.OnClickListe
             case R.id.rl_setting_change_location:
                 Intent intent = new Intent(this, DragViewActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.rl_setting_applock://App Lock
+
+                if (cb_setting_applock.isChecked()) {
+                    tv_setting_app_lock_status.setText("App Lock service OFF");
+                    stopService(watchDogIntent);
+                    cb_setting_applock.setChecked(false);
+                } else {
+                    tv_setting_app_lock_status.setText("App Lock service ON");
+                    startService(watchDogIntent);
+                    cb_setting_applock.setChecked(true);
+                }
+
                 break;
 
         }

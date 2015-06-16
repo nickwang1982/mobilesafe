@@ -14,7 +14,10 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<!-- android:interpolator="@anim/cycle_7"：动画的具体表现形式 -->
+<!-- android:interpolator="@anim/cycle_7"：
+    7 times shake
+    during 10000
+    distance is 10 px-->
 <translate xmlns:android="http://schemas.android.com/apk/res/android"
     android:duration="1000"
     android:fromXDelta="0"

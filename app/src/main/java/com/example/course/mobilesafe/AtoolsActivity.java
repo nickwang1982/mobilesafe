@@ -34,7 +34,7 @@ public class AtoolsActivity extends Activity implements OnClickListener {
 				loadQueryUI();
 				break;
 			case COPY_COMMON_NUMBER_SUCCESS:
-//				loadCommNumUI();
+				loadCommNumUI();
 				break;
 			case COPY_FAILED:
 				Toast.makeText(getApplicationContext(), "Copy failed", Toast.LENGTH_SHORT).show();
@@ -116,10 +116,10 @@ public class AtoolsActivity extends Activity implements OnClickListener {
 				}.start();
 			}
 			break;
-//		case R.id.tv_atools_applock:
-//			Intent applockIntent = new Intent(this,AppLockActivity.class);
-//			startActivity(applockIntent);
-//			break;
+		case R.id.tv_atools_applock:
+			Intent applockIntent = new Intent(this,AppLockActivity.class);
+			startActivity(applockIntent);
+			break;
 		}
 	}
 
