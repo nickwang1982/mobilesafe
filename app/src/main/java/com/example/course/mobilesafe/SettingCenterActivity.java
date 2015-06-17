@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.course.mobilesafe.service.ShowCallLocationService;
 import com.example.course.mobilesafe.service.WatchDogService;
+import com.example.course.mobilesafe.service.CallFirewallService;
 import com.example.course.mobilesafe.utils.ServiceStatusUtil;
 
 
@@ -35,6 +36,11 @@ public class SettingCenterActivity extends Activity implements View.OnClickListe
     private RelativeLayout rl_setting_change_bg;
     private TextView tv_setting_show_bg;
     private RelativeLayout rl_setting_change_location;
+
+	private TextView tv_setting_call_firewall_status;
+	private CheckBox cb_setting_call_firewall;
+	private RelativeLayout rl_setting_call_firewall;
+	private Intent callFirewallIntent;
 
     private TextView tv_setting_app_lock_status;
     private CheckBox cb_setting_applock;
@@ -91,6 +97,13 @@ public class SettingCenterActivity extends Activity implements View.OnClickListe
 
         rl_setting_change_location = (RelativeLayout) findViewById(R.id.rl_setting_change_location);
         rl_setting_change_location.setOnClickListener(this);
+
+		tv_setting_call_firewall_status = (TextView) findViewById(R.id.tv_setting_call_firewall_status);
+		cb_setting_call_firewall = (CheckBox) findViewById(R.id.cb_setting_call_firewall);
+		rl_setting_call_firewall = (RelativeLayout) findViewById(R.id.rl_setting_call_firewall);
+		callFirewallIntent = new Intent(this, CallFirewallService.class);
+
+		rl_setting_call_firewall.setOnClickListener(this);
 		tv_setting_app_lock_status = (TextView) findViewById(R.id.tv_setting_applock_status);
 		cb_setting_applock = (CheckBox) findViewById(R.id.cb_setting_applock);
 		rl_setting_app_lock = (RelativeLayout) findViewById(R.id.rl_setting_applock);
@@ -102,7 +115,14 @@ public class SettingCenterActivity extends Activity implements View.OnClickListe
 
     @Override
     protected void onResume() {
-
+		if (ServiceStatusUtil.isServiceRunning(this,
+				"com.example.course.mobilesafe.service.CallFirewallService")) {
+			cb_setting_call_firewall.setChecked(true);
+			tv_setting_call_firewall_status.setText("Black number block ON");
+		} else {
+			cb_setting_call_firewall.setChecked(false);
+			tv_setting_call_firewall_status.setText("Black number block OFF");
+		}
         if (ServiceStatusUtil.isServiceRunning(this,
                 "com.example.course.mobilesafe.service.ShowCallLocationService")) {
             cb_setting_show_location.setChecked(true);
@@ -145,6 +165,18 @@ public class SettingCenterActivity extends Activity implements View.OnClickListe
                 Intent intent = new Intent(this, DragViewActivity.class);
                 startActivity(intent);
                 break;
+		case R.id.rl_setting_call_firewall://Block black number
+
+			if (cb_setting_call_firewall.isChecked()) {
+				tv_setting_call_firewall_status.setText("Black number block OFF");
+				stopService(callFirewallIntent);
+				cb_setting_call_firewall.setChecked(false);
+			} else {
+				tv_setting_call_firewall_status.setText("Black number block ON");
+				startService(callFirewallIntent);
+				cb_setting_call_firewall.setChecked(true);
+			}
+			break;
             case R.id.rl_setting_applock://App Lock
 
                 if (cb_setting_applock.isChecked()) {

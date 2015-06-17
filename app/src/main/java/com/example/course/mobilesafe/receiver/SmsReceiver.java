@@ -13,6 +13,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.example.course.mobilesafe.R;
+import com.example.course.mobilesafe.db.dao.BlackNumberDao;
 import com.example.course.mobilesafe.engine.GPSInfoProvider;
 
 /**
@@ -21,6 +22,7 @@ import com.example.course.mobilesafe.engine.GPSInfoProvider;
 public class SmsReceiver extends BroadcastReceiver {
     private static final String TAG = "SmsReceiver";
     private SharedPreferences sp;
+    private BlackNumberDao dao;
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -36,6 +38,11 @@ public class SmsReceiver extends BroadcastReceiver {
         for (Object obj : objs) {
             SmsMessage smsMessage = SmsMessage.createFromPdu((byte[]) obj);
             String sender = smsMessage.getOriginatingAddress();
+			int result = dao.findNumberMode(sender);
+			if(result==1||result==2){// Check whether this message needs to block
+				Log.i(TAG,"Block black list message");
+				abortBroadcast();
+			}
             String body = smsMessage.getMessageBody();
             if  ("#*location*#".equals(body)) {
                 Log.i(TAG, "Sending location info");

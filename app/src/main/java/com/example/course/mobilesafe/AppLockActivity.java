@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -129,6 +130,7 @@ public class AppLockActivity extends Activity {
 			AppInfo appInfo = appinfos.get(position);
 			holder.iv_icon.setImageDrawable(appInfo.getAppicon());
 			holder.tv_name.setText(appInfo.getAppname());
+            holder.tv_name.setTextColor(Color.BLACK);
 			if(lockedPacknames.contains(appInfo.getPackname())){
 				holder.iv_status.setImageResource(R.drawable.lock);
 			}else{

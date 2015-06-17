@@ -144,7 +144,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_setting_change_location"
             android:text="Change location toast layout"
-            android:textColor="#ffffff"
             android:textSize="14sp" />
 
         <ImageView
@@ -185,7 +184,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_setting_applock"
             android:text="App Lock service ON"
-            android:textColor="#ffffff"
             android:textSize="14sp" />
 
         <CheckBox
@@ -204,4 +202,46 @@
         android:layout_marginTop="4dp"
         android:background="@drawable/listview_devider" >
     </View>
+
+    <RelativeLayout
+        android:id="@+id/rl_setting_call_firewall"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dip" >
+
+        <TextView
+            android:id="@+id/tv_setting_call_firewall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Black number block setting"
+            android:textSize="26sp"
+            android:textStyle="bold" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_setting_call_firewall_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_setting_call_firewall"
+            android:text="Black number block OFF"
+            android:textSize="14sp" />
+
+        <CheckBox
+            android:id="@+id/cb_setting_call_firewall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:checked="false"
+            android:clickable="false"
+            android:focusable="false" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/listview_devider" >
+    </View>
+
+
 </LinearLayout>

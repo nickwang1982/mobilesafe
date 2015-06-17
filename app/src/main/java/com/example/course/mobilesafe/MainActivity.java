@@ -34,6 +34,11 @@ public class MainActivity extends Activity {
                                 LostProtectedActivity.class);
                         startActivity(lostprotecedIntent);
                         break;
+                    case 1: // Blacknumber
+                        Intent callSmsIntent = new Intent(MainActivity.this,
+                                com.example.course.mobilesafe.CallSmsSafeActivity.class);
+                        startActivity(callSmsIntent);
+                        break;
                     case 7: // Advanced tools
                         Intent atoolsIntent = new Intent(MainActivity.this,
                                 AtoolsActivity.class);
